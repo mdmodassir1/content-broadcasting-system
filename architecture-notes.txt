@@ -1,0 +1,26 @@
+Authentication & RBAC:
+JWT based authentication. Middleware checks token. Role based access for teacher and principal.
+
+Subject-based System:
+Each content belongs to a subject. content_slots table stores subjects. Independent rotation per subject.
+
+Upload Handling:
+Multer handles file upload. Validation for jpg/png/gif only. Max size 10MB.
+
+Approval Workflow:
+Content status starts as pending. Principal approves or rejects with reason. Only approved content is visible.
+
+Scheduling Logic:
+Each content has duration in minutes. System calculates current time modulo total cycle time to determine active content.
+
+Database Design:
+4 tables: users, content, content_slots, content_schedule. Foreign keys maintain relationships.
+
+Folder Structure:
+MVC pattern with separate folders for controllers, routes, models, middlewares, config.
+
+Middleware Usage:
+authMiddleware for JWT verification. roleMiddleware for RBAC. uploadMiddleware for file handling.
+
+Scalability:
+Can add Redis for caching public API. Rate limiting for protection.
